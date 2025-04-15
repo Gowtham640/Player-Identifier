@@ -46,7 +46,6 @@ Draws rectangles and displays names of recognized individuals.
 Place clear, front-facing photos into the known_faces/ folder.
 
 Update the face loading logic in facerecog.py with new names/images.
-'''
 
 🙋‍♂️ Author
 Gowtham Ramakrishna Rayapureddi
