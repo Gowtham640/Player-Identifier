@@ -29,9 +29,12 @@ Face Recognition/ ├── facerecog.py # Main script ├── known_faces/ # 
    .\dlib_env\Scripts\activate
    pip install face_recognition opencv-python
    python facerecog.py
-   📸 How It Works
-   Loads and encodes images from the known_faces/ folder.
    ```
+
+📸 How It Works
+Loads and encodes images from the known_faces/ folder.
+
+```
 
 Captures webcam feed.
 
@@ -58,3 +61,4 @@ OpenCV
 dlib
 
 Let me know if you want a `requirements.txt` too, or help linking the GitHub repo!
+```
