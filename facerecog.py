@@ -4,27 +4,20 @@ from simple_facerec import SimpleFacerec
 import sys
 import os
 
+img=cv2.imread("messi1.jpg") #takes in the image
+rgb_img=cv2.cvtColor(img,cv2.COLOR_BGR2RGB)  #converts the image into rgb
+img_encoding=face_recognition.face_encodings(rgb_img)[0] #o is the index so it takes the face alone from the picture
 
-sfr=SimpleFacerec()
-sfr.load_encoding_images(r"C:\Users\grizi\OneDrive\Desktop\Projects\Personal Projects\Face Recognition\images")
+img2=cv2.imread("messi2.jpg")
+img2_rgb=cv2.cvtColor(img2,cv2.COLOR_BGR2RGB)
+img2_encoding=face_recognition.face_encodings(img2_rgb)[0]
 
-cap=cv2.VideoCapture(0) #captures the video
+result=face_recognition.compare_faces([img_encoding],img2_encoding) #compares the faces of the two pictures we encoded
+print(result)
 
-while True:
-    ret, frame=cap.read()
-
-    face_locations,face_names=sfr.detect_known_faces(frame) #detects face in each frame
-    for face_loc, name in zip(face_locations,face_names):
-        y1,x1,y2,x2=face_loc[0],face_loc[1],face_loc[2],face_loc[3] 
-
-        cv2.putText(frame,name,(x1,y1-10),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,100)) 
-        cv2.rectangle(frame,(x1,y1),(x2,y2),(255,0,200),2) #the rectangle around the face
-
-    cv2.imshow("Frame",frame)
-
-    key=cv2.waitKey(1)
-
-    if key==27: #Esc button
-        break
-cap.release()
-cv2.destroyAllWindows()
+if img is None:
+    print("Image not found or failed to load.")
+else:
+    cv2.imshow("messi", img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
